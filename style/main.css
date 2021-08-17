@@ -1,0 +1,153 @@
+/*DECLARANDO VARIÁVEIS DENTRO DO CSS*/
+
+
+/*Por que é vantagem declarar dessa maneira e não um a um? Porque imagine que vc vai reutilizar essas cores abaixo em varios lugares... se vc quiser mudar essa cor, vai ter que percorrer pela cor de estilo inteira e sair trocando! Então, se vc ja sabe quais sao as cores principais do seu site, use-as como variável e aí se precisar trocar, só vai trocar em um lugar.
+Primeiro temos que definir ela dentro da raiz do documento (fizemos isso em ":root{}" e depois vai nomeá-las com "--nomeDaVariavel: #"*/
+
+:root {
+    --vermelho: #E50914;
+    --preto: #141414;
+}
+
+
+/* Esse asterisco faz parte de uma tecnica chamada "Reset CSS" e serve para deixar o site padronizado independente do navagador que você usar */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/*ENTENDENDO O BORDER BOX: imagine que declarou uma elemento de 400px de largura aí vc começou a colocar outros elementos dentro dele. Se os conteúdos forem maior que 400px eles vão ficar empurrando a caixa e não é isso o que vc quer. Então é pra isso que serve o border-box, o limite de tudo dentro dessa box vai ser a borda da box! Ninguém vai passar disso. Se nao couberem, eles vao se espremer, mas não vão romper a caixa. 
+    
+    Uma caixa é tipo esse header .container ai. Se vc botar uma borda vai ver. A gente ja viu algo parecido em programação pra android*/
+
+body {
+    background: var(--preto);
+    /*aqui temos um exemplo da aplicação da variável que definimos la em cima*/
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+header .container {
+    display: flex;
+    /*o display flex faz com que usemos uma flexbox que é uma maneira de alinhar elementos em tela. Toda vez que vc usa do tipo flex, ele tem tendencia de jogar tudo para linha por padrão (chamada "row"). Você pode declarar também usando "flex-direction: row;".*/
+    flex-direction: row;
+    align-items: center;
+    /* quand o flex direction = row, o align-items organiza os itens de maneira vertical*/
+    justify-content: space-between;
+    /* o "justify-content: space-between" deixara os itens organizados de maneira vertical! Ele vai criar um espaço entre (between) a logo e o menu + a margem que vc colocou*/
+}
+
+
+/*palavra netflix no topo*/
+
+header .logo {
+    margin-left: 5px;
+    color: var(--vermelho);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 35px;
+}
+
+
+/*menu do topo*/
+
+header nav a {
+    text-decoration: none;
+    color: rgb(212, 212, 212);
+    margin-right: 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+
+/* o código abaixo é para mudar a cor das fontes do menu de navegação qnd vc passar o mouse em cima */
+
+header nav a:hover {
+    color: #AAA;
+}
+
+
+/*filme principal!*/
+
+.filmePrincipal {
+    font-size: 15px;
+    background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, .50)100%), url('../img/capa-house.jpg');
+    /*esse linear-gradient pede 2 camadas de cor */
+    height: 400px;
+    background-size: cover;
+    /* background-size serve para definir o tamanho da imagem usada em background. "cover" é para pegar a area de cobertura da caixa, vai pegar a caixa inteira. */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.filmePrincipal .descricao {
+    text-shadow: 0.1em 0.1em 0.2em black;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    font-size: 1.2vw;
+}
+
+.titulo {
+    margin-top: 15%;
+    font-size: 38px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.botao {
+    background-color: rgba(0, 0, 0, .50);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 0.8rem;
+    /*qnd coloca só o primeiro valor, ele adiciona pra todos os lados, qnd vc coloca dois valores, o primeiro é o lado de cima e de baixo e o segundo corresponde aos lados. Se passar 4 valores, ele vai colocando em sentido antihorario começado por cima*/
+    margin-right: 15px;
+    font-size: 15px;
+    cursor: pointer;
+    /* o cursoor vira uma maozinha */
+    transition: ease-out 0.3s;
+    /*cuida da parte de transição de uma animação e outra. Vai ser de 3 segundos e suavemente*/
+}
+
+
+/*cores do botão*/
+
+*.botao:hover {
+    background-color: rgb(219, 216, 216);
+    color: black;
+    box-shadow: -5px 0 10px #141414;
+}
+
+
+/*icones botão*/
+
+.botao i {
+    margin-right: 8px;
+}
+
+
+/*SOBRE CONTAINERS E WRAPPERS*/
+
+
+/*é um invólucro e dentro dele podemos manipular todos os objetos ao inves de um de cada vez.  */
+
+.container {
+    margin-left: 20px;
+}
+
+.filmePrincipal .container {
+    width: 70%;
+}
+
+.box-filme {
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+.carrosel-filmes {
+    margin-top: 5px;
+}
